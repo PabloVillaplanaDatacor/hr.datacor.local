@@ -56,9 +56,13 @@ const emptyForm: Omit<Department, "id"> = {
   managerId: null,
   budget: 0,
   location: "",
-  createdAt: new Date().toISOString().split("T")[0],
+  createdAt: "",
   headcount: 0,
 };
+
+function todayStr() {
+  return new Date().toISOString().split("T")[0];
+}
 
 export default function DepartmentsPage() {
   const { departments, employees, addDepartment, updateDepartment, deleteDepartment } = useHR();
@@ -95,7 +99,7 @@ export default function DepartmentsPage() {
 
   function openCreate() {
     setEditingDept(null);
-    setForm({ ...emptyForm });
+    setForm({ ...emptyForm, createdAt: todayStr() });
     setDialogOpen(true);
   }
 

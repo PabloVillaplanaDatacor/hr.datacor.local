@@ -71,10 +71,14 @@ const emptyForm: Omit<Employee, "id"> = {
   status: "active",
   role: "employee",
   salary: 0,
-  startDate: new Date().toISOString().split("T")[0],
+  startDate: "",
   avatar: "",
   address: "",
 };
+
+function todayStr() {
+  return new Date().toISOString().split("T")[0];
+}
 
 export default function EmployeesPage() {
   const { employees, departments, addEmployee, updateEmployee, deleteEmployee } = useHR();
@@ -101,7 +105,7 @@ export default function EmployeesPage() {
 
   function openCreate() {
     setEditingEmployee(null);
-    setForm(emptyForm);
+    setForm({ ...emptyForm, startDate: todayStr() });
     setDialogOpen(true);
   }
 

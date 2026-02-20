@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
@@ -8,7 +9,6 @@ import {
   Building2,
   Settings,
   LogOut,
-  Briefcase,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -29,13 +29,14 @@ export function Sidebar() {
     <aside className="flex h-screen w-64 flex-col bg-sidebar text-sidebar-foreground border-r border-sidebar-border">
       {/* Logo */}
       <div className="flex items-center gap-3 px-6 py-5 border-b border-sidebar-border">
-        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-          <Briefcase className="h-4 w-4 text-primary-foreground" />
-        </div>
-        <div>
-          <p className="text-sm font-semibold text-sidebar-accent-foreground">HR Datacor</p>
-          <p className="text-[11px] text-sidebar-foreground/60">People Management</p>
-        </div>
+        <Image
+          src="/logo.png"
+          alt="HR Datacor"
+          width={120}
+          height={36}
+          className="object-contain"
+          priority
+        />
       </div>
 
       {/* Navigation */}
